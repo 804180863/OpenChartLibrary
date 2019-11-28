@@ -14,6 +14,9 @@ export default {
       DataX: [], //横坐标数据数组
       DataY: [], //纵坐标数据数组
       Color: " ", //图表颜色
+      Color2: " ", //图表颜色
+      Color3: " ", //图表颜色
+      Color4: " ", //图表颜色
       Size: " ", //图表圆点大小
       View: " " //视图窗口设置
     };
@@ -28,10 +31,34 @@ export default {
       this.Color = data.mess;
       console.log(data.mess);
     });
+    PubSub.subscribe("color2-close", (event, data) => {
+      this.Color2 = data.mess;
+      console.log(data.mess);
+    });
+    PubSub.subscribe("color3-close", (event, data) => {
+      this.Color3 = data.mess;
+      console.log(data.mess);
+    });
+    PubSub.subscribe("color4-close", (event, data) => {
+      this.Color4 = data.mess;
+      console.log(data.mess);
+    });
   },
   watch: {
     Color(Color) {
       this.ChangeColor();
+      this.myChart.setOption(this.orgOptions);
+    },
+    Color2(Color2) {
+      this.ChangeColor2();
+      this.myChart.setOption(this.orgOptions);
+    },
+    Color3(Color3) {
+      this.ChangeColor3();
+      this.myChart.setOption(this.orgOptions);
+    },
+    Color4(Color4) {
+      this.ChangeColor4();
       this.myChart.setOption(this.orgOptions);
     },
     TypeC(TypeC) {
@@ -48,6 +75,16 @@ export default {
     },
     ChangeColor() {
       this.orgOptions.series[0].itemStyle.color = this.Color;
+    },
+    ChangeColor2() {
+      this.orgOptions.xAxis.axisLine.lineStyle.color = this.Color2;
+      this.orgOptions.yAxis.axisLine.lineStyle.color = this.Color2;
+    },
+    ChangeColor3() {
+      this.orgOptions.backgroundColor = this.Color3;
+    },
+    ChangeColor4() {
+      this.orgOptions.textStyle.color = this.Color4;
     },
     ChangeEcharts() {
       if (this.TypeC === "line") {
@@ -67,20 +104,35 @@ export default {
     Charts() {
       this.myChart = echarts.init(document.getElementById("Echarts"));
       this.orgOptions = {
+        textStyle: {
+          fontSize: 15,
+          color: "#00FF00"
+        },
+        backgroundColor: "#FFFFFF",
         xAxis: {
           type: "category",
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          axisLine: {
+            lineStyle: {
+              color: "#00FF00"
+              //width:8,//这里是为了突出显示加上的
+            }
+          }
         },
         yAxis: {
-          type: "value"
+          type: "value",
+          axisLine: {
+            lineStyle: {
+              color: "#00FF00"
+              //width:8,//这里是为了突出显示加上的
+            }
+          }
         },
         series: [
           {
             data: [820, 932, 901, 934, 1290, 1330, 1320],
             itemStyle: {
-            
-                  color: "#409EFF"
-             
+              color: "#409EFF"
             },
 
             type: "line"
