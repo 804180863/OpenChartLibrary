@@ -1,5 +1,6 @@
-# vuescaffolding3
-
+# OpenChartLibrary
+## Project 介绍
+    个人开源得图表项目 【- . - 】 
 ## Project setup
 ```
 yarn install
