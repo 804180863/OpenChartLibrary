@@ -1,29 +1,8 @@
 <template>
   <div class="Rone">
     <div class="Ronetitle"></div>
-    <div class="Ronetitle">图表类型</div>
-    <div class="cateList">
-      <el-radio v-model="radio" label="1">折线图</el-radio>
-      <el-radio v-model="radio" label="2">柱状图</el-radio>
-    </div>
-    <div class="cateList">
-      <el-radio v-model="radio" label="3">散点图</el-radio>
-      <el-radio v-model="radio" label="4">饼状图</el-radio>
-    </div>
-    <div class="cateList">
-      <el-radio v-model="radio" label="5">散点图</el-radio>
-      <el-radio v-model="radio" label="6">饼状图</el-radio>
-    </div>
-    <el-divider></el-divider>
 
-    <div class="cateListblock">
-      <div class="block">
-        <span class="demonstration">图表数据点大小(Size)</span>
-        <el-slider v-model="value1"></el-slider>
-      </div>
-    </div>
-    <el-divider></el-divider>
-    <div class="Ronetitle">列映射</div>
+    <div class="Ronetitle">行表名</div>
     <div class="cateList">
       <el-select v-model="value" placeholder="X轴">
         <el-option
@@ -34,26 +13,14 @@
         ></el-option>
       </el-select>
     </div>
-    <div class="cateList">
-      <el-select v-model="valuex" placeholder="Y轴">
-        <el-option
-          v-for="item in options1"
-          :key="item.valuex"
-          :label="item.label"
-          :value="item.valuex"
-        ></el-option>
-      </el-select>
+    <div class="smallla">
+      <el-pagination small layout="prev, pager, next" :total="50"></el-pagination>
     </div>
-    <div class="cateList">
-      <el-select v-model="value" placeholder="Z轴" disabled>
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        ></el-option>
-      </el-select>
-    </div>
+    <el-table :data="tableData" border style="width: 100%">
+      <el-table-column prop="date" label="行数据" ></el-table-column>
+      <el-table-column prop="address" label="列数据"></el-table-column>
+     
+    </el-table>
   </div>
 </template>
 
@@ -61,6 +28,28 @@
 export default {
   data() {
     return {
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄"
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1517 弄"
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1519 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        }
+      ],
       radio: "1",
       value1: 0,
       options: [
@@ -115,6 +104,11 @@ export default {
 </script>
 
 <style>
+.smallla {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
 .Rone {
   width: 100%;
   height: 100%;

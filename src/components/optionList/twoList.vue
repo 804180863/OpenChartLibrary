@@ -84,6 +84,7 @@ export default {
   width: 160px;
 }
 .Rone {
+  overflow: hidden;
   width: 100%;
   height: 100%;
 }

@@ -1,5 +1,13 @@
 <template>
   <div class="DataView">
+    <!-- 弹框从网站导入 -->
+    <el-dialog title="从网站中导入" :visible.sync="centerDialogVisible" width="30%" center>
+     <el-input v-model="input" placeholder="请输入网址"></el-input>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
     <div class="Box">
       <el-col :span="12" class="Top">
         <el-dropdown trigger="click">
@@ -8,7 +16,9 @@
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-plus" @click="Computerimport()">从电脑中导入</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-plus" @click="centerDialogVisible = true">
+              <el-button type="text" @click="centerDialogVisible = true">从网站中导入</el-button>
+            </el-dropdown-item>
             <el-dropdown-item icon="el-icon-circle-plus">从网站中导入</el-dropdown-item>
             <el-dropdown-item icon="el-icon-circle-plus-outline">测试用例</el-dropdown-item>
             <el-dropdown-item icon="el-icon-check">从电脑中导入</el-dropdown-item>
@@ -35,7 +45,9 @@ export default {
   data() {
     return {
       TEXT: "HomePage",
-      UsePage: true
+      UsePage: true,
+      centerDialogVisible: false,
+      input:'',
     };
   },
   methods: {

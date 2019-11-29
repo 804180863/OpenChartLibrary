@@ -2,19 +2,19 @@
   <div class="Option">
     <div class="OptionL">
       <div class="OptionOne" :class="{active:$route.path==='/oneList'}" @click="goOne()">
-        <i class="el-icon-circle-plus"></i>
+        <i class="el-icon-document"></i>
       </div>
       <div class="OptionTwo" :class="{active:$route.path==='/TwoList'}" @click="goTwo()">
-        <i class="el-icon-upload"></i>
+        <i class="el-icon-orange"></i>
       </div>
       <div class="OptionThree" :class="{active:$route.path==='/ThreeList'}" @click="goThree()">
-        <i class="el-icon-s-operation"></i>
+        <i class="el-icon-view"></i>
       </div>
       <div class="OptionFour" :class="{active:$route.path==='/FourList'}" @click="goFour()">
         <i class="el-icon-s-data"></i>
       </div>
       <div class="OptionFive" :class="{active:$route.path==='/FiveList'}" @click="goFive()">
-        <i class="el-icon-view"></i>
+        <i class="el-icon-set-up"></i>
       </div>
     </div>
     <div class="OptionR">

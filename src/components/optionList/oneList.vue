@@ -66,6 +66,7 @@ export default {
 
 <style>
 .Rone {
+  overflow: hidden;
   width: 100%;
   height: 100%;
 }

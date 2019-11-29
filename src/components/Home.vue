@@ -58,7 +58,7 @@ html,
 body,
 #app {
   height: 100%;
-  min-width: 1480px;
+  min-width: 1570px;
   min-height: 800px;
 }
 .container {
