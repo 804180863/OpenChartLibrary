@@ -134,7 +134,6 @@ export default {
             itemStyle: {
               color: "#409EFF"
             },
-
             type: "line"
           }
         ]
