@@ -106,7 +106,7 @@ export default {
       this.orgOptions = {
         textStyle: {
           fontSize: 15,
-          color: "#00FF00"
+          color: "#000000"
         },
         backgroundColor: "#FFFFFF",
         xAxis: {
@@ -114,7 +114,7 @@ export default {
           data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
           axisLine: {
             lineStyle: {
-              color: "#00FF00"
+              color: "#000000"
               //width:8,//这里是为了突出显示加上的
             }
           }
@@ -123,7 +123,7 @@ export default {
           type: "value",
           axisLine: {
             lineStyle: {
-              color: "#00FF00"
+              color: "#000000"
               //width:8,//这里是为了突出显示加上的
             }
           }
