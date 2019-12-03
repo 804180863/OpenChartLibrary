@@ -89,21 +89,47 @@ export default {
     ChangeEcharts() {
       if (this.TypeC === "line") {
         this.orgOptions.series[0].type = "line";
+        this.orgOptions.title.text = "折线图";
       } else if (this.TypeC === "bar") {
         this.orgOptions.series[0].type = "bar";
+        this.orgOptions.title.text = "柱状图";
       } else if (this.TypeC === "radar") {
         this.orgOptions.series[0].type = "radar";
+        this.orgOptions.title.text = "雷达图";
       } else if (this.TypeC === "scatter") {
         this.orgOptions.series[0].type = "scatter";
+        this.orgOptions.title.text = "散点图";
       } else if (this.TypeC === "sunburst") {
         this.orgOptions.series[0].type = "sunburst";
+        this.orgOptions.title.text = "太阳图";
       } else if (this.TypeC === "pie") {
         this.orgOptions.series[0].type = "pie";
+        this.orgOptions.title.text = "饼状图";
       }
     },
     Charts() {
       this.myChart = echarts.init(document.getElementById("Echarts"));
       this.orgOptions = {
+        title: {
+          show: true,
+          textStyle: {
+            color: "green" //标题颜色
+          },
+          text: "折线图",
+          left: "center"
+        },
+        toolbox: {
+          show: true,
+          feature: {
+            dataZoom: {
+              yAxisIndex: "none"
+            },
+            dataView: { readOnly: false },
+
+            restore: {},
+            saveAsImage: {}
+          }
+        },
         textStyle: {
           fontSize: 15,
           color: "#000000"

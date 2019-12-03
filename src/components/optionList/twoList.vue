@@ -23,10 +23,15 @@
       </div>
     </div>
     <div class="Ronetitle">文字颜色</div>
-
     <div class="cateList">
       <div class="block">
         <el-color-picker v-model="color4"></el-color-picker>
+      </div>
+    </div>
+     <div class="Ronetitle">标题颜色</div>
+    <div class="cateList">
+      <div class="block">
+        <el-color-picker v-model="color5"></el-color-picker>
       </div>
     </div>
   </div>
@@ -39,7 +44,8 @@ export default {
       color1: "#409EFF",
       color2: "#000000",
       color3: "#FFFFFF",
-      color4: "#000000"
+      color4: "#000000",
+      color5: "#000000"
     };
   },
   mounted() {
@@ -47,6 +53,7 @@ export default {
     this.Ccolor2();
     this.Ccolor3();
     this.Ccolor4();
+    this.Ccolor5();
   },
   methods: {
     Ccolor1() {
@@ -60,6 +67,9 @@ export default {
     },
     Ccolor4() {
       PubSub.publish("color4-close", { model: "color4", mess: this.color4 });
+    },
+     Ccolor5() {
+      PubSub.publish("color5-close", { model: "color5", mess: this.color5 });
     }
   },
   watch: {
@@ -74,6 +84,9 @@ export default {
     },
     color4(color4) {
       this.Ccolor4();
+    },
+    color5(color5) {
+      this.Ccolor5();
     }
   }
 };
