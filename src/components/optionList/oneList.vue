@@ -52,7 +52,6 @@ export default {
   },
   methods: {
     close() {
-      //发布关闭弹窗事件
       PubSub.publish("model-close", { model: "model1", mess: this.radio });
     }
   },

@@ -14,7 +14,7 @@
       </el-select>
     </div>
     <div class="smallla">
-      <el-pagination small layout="prev, pager, next" :total="50"></el-pagination>
+      <el-pagination small layout="prev, pager, next" :total="5000"></el-pagination>
     </div>
     <el-table :data="tableData" border style="width: 100%">
       <el-table-column prop="date" label="行数据" ></el-table-column>

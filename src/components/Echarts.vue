@@ -17,6 +17,7 @@ export default {
       Color2: " ", //图表颜色
       Color3: " ", //图表颜色
       Color4: " ", //图表颜色
+      Color5: " ", //标题颜色
       Size: " ", //图表圆点大小
       View: " " //视图窗口设置
     };
@@ -43,6 +44,10 @@ export default {
       this.Color4 = data.mess;
       console.log(data.mess);
     });
+    PubSub.subscribe("color5-close", (event, data) => {
+      this.Color5 = data.mess;
+      console.log(data.mess);
+    });
   },
   watch: {
     Color(Color) {
@@ -59,6 +64,10 @@ export default {
     },
     Color4(Color4) {
       this.ChangeColor4();
+      this.myChart.setOption(this.orgOptions);
+    },
+    Color5(Color5) {
+      this.ChangeColor5();
       this.myChart.setOption(this.orgOptions);
     },
     TypeC(TypeC) {
@@ -85,6 +94,9 @@ export default {
     },
     ChangeColor4() {
       this.orgOptions.textStyle.color = this.Color4;
+    },
+    ChangeColor5(){
+      this.orgOptions.title.textStyle.color = this.Color5;
     },
     ChangeEcharts() {
       if (this.TypeC === "line") {
@@ -113,7 +125,7 @@ export default {
         title: {
           show: true,
           textStyle: {
-            color: "green" //标题颜色
+            color: "#000000" //标题颜色
           },
           text: "折线图",
           left: "center"
@@ -124,8 +136,6 @@ export default {
             dataZoom: {
               yAxisIndex: "none"
             },
-            dataView: { readOnly: false },
-
             restore: {},
             saveAsImage: {}
           }
