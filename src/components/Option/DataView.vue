@@ -9,8 +9,9 @@
       </span>
     </el-dialog>
     <div class="Box">
+     
       <el-col :span="12" class="Top">
-        <el-dropdown trigger="click">
+        <el-dropdown trigger="click"  >
           <span class="el-dropdown-link">
             样本数据{{TEXT}}
             <i class="el-icon-arrow-down el-icon--right"></i>
@@ -37,6 +38,7 @@
 </template>
 
 <script>
+import {dropdown} from 'element-ui'
 import page from "../page";
 export default {
   components: {
@@ -51,6 +53,7 @@ export default {
     };
   },
   methods: {
+    
     handleCommand(command) {
       this.$message("click on item " + command);
     },
