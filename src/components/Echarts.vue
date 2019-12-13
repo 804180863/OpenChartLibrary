@@ -19,11 +19,36 @@ export default {
       Color4: " ", //图表颜色
       Color5: " ", //标题颜色
       Size: " ", //图表圆点大小
-      View: " " //视图窗口设置
+      View: " ", //视图窗口设置
+      XTextSize: 0, //横坐标文字大小
+      YTextSize: 0, //纵坐标文字大小
+      TitleSize: 0, //标 题 文 字 大 小
+      Xsize: 0, //X 轴 旋 转 角 度
+      Ysize: 0 //Y 轴 旋 转 角 度
     };
   },
   created() {
     //订阅关闭弹窗事件 参数event指"model-close"，没什么用
+    PubSub.subscribe("XTextSize-mode", (event, data) => {
+      this.close(data.modal);
+      this.XTextSize = data.mess;
+    });
+    PubSub.subscribe("YTextSize-mode", (event, data) => {
+      this.close(data.modal);
+      this.YTextSize = data.mess;
+    });
+    PubSub.subscribe("TitleSize-mode", (event, data) => {
+      this.close(data.modal);
+      this.TitleSize = data.mess;
+    });
+    PubSub.subscribe("Xsize-mode", (event, data) => {
+      this.close(data.modal);
+      this.Xsize = data.mess;
+    });
+    PubSub.subscribe("Ysize-mode", (event, data) => {
+      this.close(data.modal);
+      this.Ysize = data.mess;
+    });
     PubSub.subscribe("model-close", (event, data) => {
       this.close(data.modal);
       this.TypeC = data.mess;
@@ -50,6 +75,26 @@ export default {
     });
   },
   watch: {
+    XTextSize(XTextSize) {
+      this.XTextSizeA();
+      this.myChart.setOption(this.orgOptions);
+    },
+    YTextSize(YTextSize) {
+      this.YTextSizeA();
+      this.myChart.setOption(this.orgOptions);
+    },
+    TitleSize(TitleSize) {
+      this.TitleSizeA();
+      this.myChart.setOption(this.orgOptions);
+    },
+    Xsize(Xsize) {
+      this.XsizeA();
+      this.myChart.setOption(this.orgOptions);
+    },
+    Ysize(Ysize) {
+      this.YsizeA();
+      this.myChart.setOption(this.orgOptions);
+    },
     Color(Color) {
       this.ChangeColor();
       this.myChart.setOption(this.orgOptions);
@@ -95,7 +140,7 @@ export default {
     ChangeColor4() {
       this.orgOptions.textStyle.color = this.Color4;
     },
-    ChangeColor5(){
+    ChangeColor5() {
       this.orgOptions.title.textStyle.color = this.Color5;
     },
     ChangeEcharts() {
@@ -119,13 +164,29 @@ export default {
         this.orgOptions.title.text = "饼状图";
       }
     },
+    XTextSizeA() {
+      this.orgOptions.xAxis.axisLabel.textStyle.fontSize = this.XTextSize
+    },
+    YTextSizeA() {
+      this.orgOptions.yAxis.axisLabel.textStyle.fontSize = this.YTextSize
+    },
+    TitleSizeA() {
+      this.orgOptions.title.textStyle.fontSize = this.TitleSize;
+    },
+    XsizeA() {
+      this.orgOptions.xAxis.axisLabel.rotate = this.Xsize;
+    },
+    YsizeA() {
+      this.orgOptions.yAxis.axisLabel.rotate = this.Ysize;
+    },
     Charts() {
       this.myChart = echarts.init(document.getElementById("Echarts"));
       this.orgOptions = {
         title: {
           show: true,
           textStyle: {
-            color: "#000000" //标题颜色
+            color: "#000000", //标题颜色
+            fontSize: 14
           },
           text: "折线图",
           left: "center"
@@ -148,6 +209,13 @@ export default {
         xAxis: {
           type: "category",
           data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          axisLabel: {
+            textStyle: {
+              fontSize: 14 //更改坐标轴文字大小
+            },
+            rotate: 90
+          },
+
           axisLine: {
             lineStyle: {
               color: "#000000"
@@ -157,10 +225,19 @@ export default {
         },
         yAxis: {
           type: "value",
+          nameTextStyle: {
+            fontSize: 44
+          },
+          axisLabel: {
+             textStyle: {
+              fontSize: 14 //更改坐标轴文字大小
+            },
+            rotate: 24
+          },
           axisLine: {
             lineStyle: {
               color: "#000000"
-              //width:8,//这里是为了突出显示加上的
+              // width:8,//这里是为了突出显示加上的
             }
           }
         },

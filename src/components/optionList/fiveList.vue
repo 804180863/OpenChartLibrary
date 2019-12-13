@@ -6,7 +6,7 @@
         <el-slider v-model="XTextSize"></el-slider>
       </div>
     </div>
-     <div class="cateLine">
+    <div class="cateLine">
       <div class="block">
         <span class="demonstration">纵坐标文字大小</span>
         <el-slider v-model="YTextSize"></el-slider>
@@ -37,12 +37,46 @@
 export default {
   data() {
     return {
-      XTextSize:12,
-      YTextSize:16,
-      TitleSize:16,
-      Xsize:1,
-      Ysize:44,
+      XTextSize: 12,
+      YTextSize: 16,
+      TitleSize: 16,
+      Xsize: 22,
+      Ysize: 44
     };
+  },
+  methods: {
+    XTextSizeA() {
+      PubSub.publish("XTextSize-mode", { model: "XTextSize", mess: this.XTextSize });
+    },
+    YTextSizeA() {
+      PubSub.publish("YTextSize-mode", { model: "YTextSize", mess: this.YTextSize });
+    },
+    TitleSizeA() {
+      PubSub.publish("TitleSize-mode", { model: "TitleSize", mess: this.TitleSize });
+    },
+    XsizeA() {
+      PubSub.publish("Xsize-mode", { model: "Xsize", mess: this.Xsize });
+    },
+    YsizeA() {
+      PubSub.publish("Ysize-mode", { model: "Ysize", mess: this.Ysize });
+    }
+  },
+  watch: {
+    XTextSize(XTextSize) {
+      this.XTextSizeA();
+    },
+    YTextSize(YTextSize) {
+      this.YTextSizeA();
+    },
+    TitleSize(TitleSize) {
+      this.TitleSizeA();
+    },
+    Xsize(Xsize) {
+      this.XsizeA();
+    },
+    Ysize(Ysize) {
+      this.YsizeA();
+    }
   }
 };
 </script>
