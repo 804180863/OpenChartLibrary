@@ -120,4 +120,4 @@ export default {
   justify-content: center;
   align-items: center;
 }
-</style>left
+</style>
