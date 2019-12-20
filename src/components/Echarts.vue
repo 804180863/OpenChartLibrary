@@ -55,23 +55,18 @@ export default {
     });
     PubSub.subscribe("color1-close", (event, data) => {
       this.Color = data.mess;
-      console.log(data.mess);
     });
     PubSub.subscribe("color2-close", (event, data) => {
       this.Color2 = data.mess;
-      console.log(data.mess);
     });
     PubSub.subscribe("color3-close", (event, data) => {
       this.Color3 = data.mess;
-      console.log(data.mess);
     });
     PubSub.subscribe("color4-close", (event, data) => {
       this.Color4 = data.mess;
-      console.log(data.mess);
     });
     PubSub.subscribe("color5-close", (event, data) => {
       this.Color5 = data.mess;
-      console.log(data.mess);
     });
   },
   watch: {

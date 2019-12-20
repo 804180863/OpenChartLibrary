@@ -1,47 +1,51 @@
 <template>
-<div>
-   <el-select v-model="value" placeholder="请选择">
+  <div>
+        <el-divider></el-divider>
+    <div class="cateList">
+      <el-switch v-model="value1" active-text="是否开启流式数据"></el-switch>
+    </div>
+        <el-divider></el-divider>
+         <div class="Ronetitle ">流数据间隔时间</div>
+         
+    <div class="cateList">
+     
+      <el-select v-model="value" placeholder="请选择">
     <el-option
       v-for="item in options"
       :key="item.value"
       :label="item.label"
       :value="item.value"
-     
-       @keydown="handleEnter"
-     >
+      :disabled="item.disabled">
     </el-option>
   </el-select>
-</div>
- 
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
-      return {
-        options: [{
+    return {
+      value1: true,
+       options: [{
           value: '选项1',
-          label: '黄金糕'
+          label: '1s'
         }, {
           value: '选项2',
-          label: '双皮奶'
+          label: '4s',
+          disabled: true
         }, {
           value: '选项3',
-          label: '蚵仔煎'
+          label: '10s'
         }, {
           value: '选项4',
-          label: '龙须面'
+          label: '15s'
         }, {
           value: '选项5',
-          label: '北京烤鸭'
+          label: '20s'
         }],
         value: ''
-      }
-  },
-  methods:{
-    handleEnter(){
-      console.log(112233)
-    }
+    };
   }
 };
 </script>
@@ -62,6 +66,7 @@ export default {
 .Ronetitle {
   width: 100%;
   height: 2%;
+  margin-bottom: 6%;
   text-align: center;
   font-weight: 700;
 }

@@ -40,6 +40,7 @@ export default {
     },
     goFive() {
       this.$router.push({ path: "/FiveList" });
+    
     }
   }
 };
