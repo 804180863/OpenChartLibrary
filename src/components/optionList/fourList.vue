@@ -8,7 +8,6 @@
          <div class="Ronetitle ">流数据间隔时间</div>
          
     <div class="cateList">
-     
       <el-select v-model="value" placeholder="请选择">
     <el-option
       v-for="item in options"
@@ -75,4 +74,4 @@ export default {
   justify-content: center;
   align-items: center;
 }
-</style>left
+</style>

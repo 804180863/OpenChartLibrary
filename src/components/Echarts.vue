@@ -1,5 +1,6 @@
 <template>
   <div id="Echarts"></div>
+  
 </template>
 
 <script>
@@ -30,90 +31,84 @@ export default {
   created() {
     //订阅关闭弹窗事件 参数event指"model-close"，没什么用
     PubSub.subscribe("XTextSize-mode", (event, data) => {
-      this.close(data.modal);
       this.XTextSize = data.mess;
-    });
+    }); //横坐标文字大小
     PubSub.subscribe("YTextSize-mode", (event, data) => {
-      this.close(data.modal);
       this.YTextSize = data.mess;
-    });
+    }); //纵坐标文字大小
     PubSub.subscribe("TitleSize-mode", (event, data) => {
-      this.close(data.modal);
       this.TitleSize = data.mess;
-    });
+    }); //标 题 文 字 大 小
     PubSub.subscribe("Xsize-mode", (event, data) => {
-      this.close(data.modal);
       this.Xsize = data.mess;
-    });
+    }); //X 轴 旋 转 角 度
     PubSub.subscribe("Ysize-mode", (event, data) => {
-      this.close(data.modal);
       this.Ysize = data.mess;
-    });
+    }); //Y 轴 旋 转 角 度
     PubSub.subscribe("model-close", (event, data) => {
-      this.close(data.modal);
       this.TypeC = data.mess;
-    });
+    });//图表类型
     PubSub.subscribe("color1-close", (event, data) => {
       this.Color = data.mess;
-    });
+    });//图表颜色线
     PubSub.subscribe("color2-close", (event, data) => {
       this.Color2 = data.mess;
-    });
+    });//图表颜色横轴
     PubSub.subscribe("color3-close", (event, data) => {
       this.Color3 = data.mess;
-    });
+    });//图表颜色背景
     PubSub.subscribe("color4-close", (event, data) => {
       this.Color4 = data.mess;
-    });
+    });//图表颜色文字
     PubSub.subscribe("color5-close", (event, data) => {
       this.Color5 = data.mess;
-    });
+    });//图表颜色标题
   },
   watch: {
     XTextSize(XTextSize) {
       this.XTextSizeA();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//横坐标文字大小
     YTextSize(YTextSize) {
       this.YTextSizeA();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//纵坐标文字大小
     TitleSize(TitleSize) {
       this.TitleSizeA();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//标 题 文 字 大 小
     Xsize(Xsize) {
       this.XsizeA();
       this.myChart.setOption(this.orgOptions);
-    },
+    }, //X 轴 旋 转 角 度
     Ysize(Ysize) {
       this.YsizeA();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//Y 轴 旋 转 角 度
     Color(Color) {
       this.ChangeColor();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//图表颜色线
     Color2(Color2) {
       this.ChangeColor2();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//图表颜色横轴
     Color3(Color3) {
       this.ChangeColor3();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//图表颜色背景
     Color4(Color4) {
       this.ChangeColor4();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//图表颜色背景
     Color5(Color5) {
       this.ChangeColor5();
       this.myChart.setOption(this.orgOptions);
-    },
+    },//图表颜色标题
     TypeC(TypeC) {
       this.ChangeEcharts();
       this.myChart.setOption(this.orgOptions);
-    }
+    }, //图表类型
   },
   mounted() {
     this.Charts();
@@ -160,10 +155,10 @@ export default {
       }
     },
     XTextSizeA() {
-      this.orgOptions.xAxis.axisLabel.textStyle.fontSize = this.XTextSize
+      this.orgOptions.xAxis.axisLabel.textStyle.fontSize = this.XTextSize;
     },
     YTextSizeA() {
-      this.orgOptions.yAxis.axisLabel.textStyle.fontSize = this.YTextSize
+      this.orgOptions.yAxis.axisLabel.textStyle.fontSize = this.YTextSize;
     },
     TitleSizeA() {
       this.orgOptions.title.textStyle.fontSize = this.TitleSize;
@@ -210,7 +205,6 @@ export default {
             },
             rotate: 90
           },
-
           axisLine: {
             lineStyle: {
               color: "#000000"
@@ -224,7 +218,7 @@ export default {
             fontSize: 44
           },
           axisLabel: {
-             textStyle: {
+            textStyle: {
               fontSize: 14 //更改坐标轴文字大小
             },
             rotate: 24
@@ -247,7 +241,7 @@ export default {
         ]
       };
       this.myChart.setOption(this.orgOptions);
-    }
+    },//图表配置
   }
 };
 </script>
